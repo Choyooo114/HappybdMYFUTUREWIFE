@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Muayjeed! - Green Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Itim&display=swap"
+        rel="stylesheet">
+    <style>
+        /* CSS Variables - Green Theme */
+        :root {
+            --primary-green: #3f9747;
+            /* Olive Drab - Main accent (darker green) */
+            --light-green: #9ACD32;
+            /* Yellow Green - Background accent (lighter green) */
+            --soft-green: #C2E0C4;
+            /* Light Pastel Green - Card base / soft background */
+            --forest-green: #228B22;
+            /* Forest Green - Deeper accent */
+            --lime-green: #A4C639;
+            /* Lime Green - Vibrant green */
+            --mint-cream: #F5FFFA;
+            /* Mint Cream - Near white */
+            --dark-text: #36454F;
+            /* Charcoal - Dark text */
+            --heading-color: #3C623C;
+            /* Darker Green for headings */
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.2);
+            --shadow-strong: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Global Styles */
+        body {
+            font-family: "Bai Jamjuree", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
+            overflow: hidden;
+            /* Prevent scrolling */
+            font-family: 'Mitr', 'Prompt', sans-serif;
+            /* Prefer Mitr for Thai, Prompt for general */
+            color: var(--dark-text);
+            background: linear-gradient(135deg, var(--soft-green) 0%, var(--light-green) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: background 0.8s ease-in-out;
+            cursor: pointer;
+            /* Indicate clickable */
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            /* Background handled by body gradient */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+            padding: 20px;
+            box-sizing: border-box;
+            transform: scale(0.9) translateY(20px);
+            /* Start slightly smaller and lower */
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.8s ease-out, visibility 0.8s;
+            pointer-events: none;
+            /* Disable clicks until active */
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            /* Enable clicks when active */
+        }
+
+        .page-content {
+            max-width: 90%;
+            width: 700px;
+            padding: 40px;
+            background-color: var(--mint-cream);
+            /* Lighter background for content */
+            border-radius: 20px;
+            box-shadow: 0 15px 30px var(--shadow-medium);
+            position: relative;
+            z-index: 2;
+            box-sizing: border-box;
+            border: 2px solid var(--primary-green);
+            /* Green border */
+        }
+
+        h1,
+        h2 {
+            font-family: 'Prompt', sans-serif;
+            color: var(--forest-green);
+            /* Darker green for headings */
+            font-size: 3.5em;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 5px var(--shadow-light);
+        }
+
+        p {
+            font-family: 'Mitr', sans-serif;
+            font-size: 1.6em;
+            line-height: 1.8;
+            color: var(--dark-text);
+            text-align: justify;
+            /* Justify long text for better readability */
+        }
+
+        /* Page 1 Specific */
+        #page1 h1 {
+            font-size: 5em;
+            color: var(--primary-green);
+            animation: bounceIn 1.5s ease-out;
+        }
+
+        #page1 .tap-to-start {
+            font-size: 1.2em;
+            color: var(--heading-color);
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out 1.5s forwards;
+            /* Fade in after main text */
+            cursor: pointer;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.2) translateY(-100%);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.1) translateY(0);
+                opacity: 1;
+            }
+
+            70% {
+                transform: scale(0.95);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Page 2 Specific */
+        #page2 p {
+            font-size: 2.2em;
+            font-weight: 600;
+            color: var(--heading-color);
+            line-height: 1.5;
+            animation: fadeInScale 2s ease-in-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Page 3 (Birthday Message Card) */
+        #page3 {
+            background: linear-gradient(135deg, var(--mint-cream) 0%, var(--soft-green) 100%);
+        }
+
+        #page3 .page-content {
+            border: 2px dashed var(--forest-green);
+            /* Card-like border, green */
+            box-shadow: 0 10px 25px var(--shadow-medium);
+            max-width: 800px;
+            /* Wider for message */
+            padding: 50px;
+        }
+
+        #page3 h1 {
+            font-size: 3.8em;
+            color: var(--primary-green);
+            /* Green heading */
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px var(--shadow-light);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        #page3 p {
+            font-size: 1.4em;
+            /* Slightly larger for main message */
+            line-height: 1.7;
+            text-align: left;
+            white-space: pre-wrap;
+            /* Preserves formatting like line breaks */
+            animation: fadeIn 2s ease-in-out 0.5s forwards;
+            /* Delayed fade in */
+            opacity: 0;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* Page 4 (Blow Candles) */
+        #page4 h1 {
+            font-size: 4.5em;
+            color: var(--primary-green);
+            /* Green heading */
+            animation: pulse 1.8s infinite alternate;
+            text-shadow: 4px 4px 6px var(--shadow-medium);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Page 5 (Cake & Candles) */
+        #page5 {
+            background: linear-gradient(135deg, #CCE6FF 0%, #BFEFFF 100%);
+            /* Lighter blue for cake background */
+            overflow: hidden;
+        }
+
+        .cake-container {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            margin-top: -100px;
+            /* Adjust vertical position */
+            opacity: 0;
+            transform: translateY(-300px);
+            /* Start higher up */
+            transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            /* Smooth bounce-like drop */
+            box-shadow: 0 20px 40px var(--shadow-strong);
+            /* Stronger shadow for cake */
+            border-radius: 50%;
+            /* Give a hint of roundness to the cake base area */
+        }
+
+        #page5.active .cake-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cake-base {
+            width: 100%;
+            height: 70px;
+            background-color: var(--forest-green);
+            /* Darker green cake base */
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            box-shadow: 0 10px 20px var(--shadow-light) inset, 0 -5px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .cake-layer {
+            width: 90%;
+            height: 60px;
+            background-color: var(--primary-green);
+            /* Primary green for layers */
+            border-radius: 50%;
+            position: absolute;
+            bottom: 60px;
+            /* Adjusted based on base height */
+            left: 5%;
+            box-shadow: 0 5px 15px var(--shadow-light) inset, 0 -3px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .cake-layer:nth-child(2) {
+            bottom: 120px;
+            width: 80%;
+            left: 10%;
+            background-color: var(--lime-green);
+        }
+
+        /* Lighter green for middle layer */
+        .cake-layer:nth-child(3) {
+            bottom: 180px;
+            width: 70%;
+            left: 15%;
+            background-color: var(--light-green);
+        }
+
+        /* Lightest green for top layer */
+
+        .frosting {
+            width: 100%;
+            height: 40px;
+            background-color: var(--mint-cream);
+            /* Mint cream frosting */
+            border-radius: 50%;
+            position: absolute;
+            top: -20px;
+            /* Adjust to sit on top layer */
+            left: 0;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 -3px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .candle {
+            position: absolute;
+            width: 12px;
+            height: 60px;
+            background: linear-gradient(to top, #FFEB3B, #FFC107);
+            /* Goldish yellow - keeps warm candle feel */
+            border-radius: 3px;
+            bottom: calc(180px + 60px + 20px);
+            /* Bottom of top layer + height of top layer + frosting height */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 11;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .candle:nth-child(2) {
+            left: calc(50% - 40px);
+            transform: translateX(-50%) rotate(-5deg);
+        }
+
+        .candle:nth-child(3) {
+            left: calc(50% + 40px);
+            transform: translateX(-50%) rotate(5deg);
+        }
+
+        .flame {
+            width: 12px;
+            height: 25px;
+            background: radial-gradient(circle at 50% 0, #FFEB3B 0%, #FFC107 50%, transparent 70%);
+            /* More realistic flame gradient */
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: -18px;
+            left: 0px;
+            box-shadow: 0 0 15px #FFEB3B, 0 0 30px #FFC107;
+            animation: flicker 0.25s infinite alternate, floatFlame 1s infinite alternate;
+            transform-origin: bottom;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: scaleY(1);
+                opacity: 1;
+                filter: brightness(1);
+            }
+
+            50% {
+                transform: scaleY(0.9);
+                opacity: 0.95;
+                filter: brightness(1.1);
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+                filter: brightness(1);
+            }
+        }
+
+        @keyframes floatFlame {
+            0% {
+                transform: translateY(0px);
+            }
+
+            100% {
+                transform: translateY(-2px);
+            }
+        }
+
+        .candle.extinguished .flame {
+            opacity: 0;
+            transform: scale(0) translateY(5px);
+            /* Shrink and move down slightly */
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .candle.extinguished {
+            box-shadow: none;
+            /* No shadow when extinguished */
+        }
+
+        /* Adjusted position and animation for cake-text */
+        .cake-text {
+            position: absolute;
+            /* Positioning relative to its parent .cake-container */
+            top: 20px;
+            /* Adjust vertically to be above the top layer/candles */
+            left: 50%;
+            transform: translateX(-50%) translateY(50px);
+            /* Start slightly below final position, adjust as needed */
+            font-size: 4em;
+            font-weight: 600;
+            color: var(--primary-green);
+            /* Green text on cake */
+            text-shadow: 4px 4px 8px var(--shadow-strong);
+            z-index: 12;
+            opacity: 0;
+        }
+
+        #page5.active .cake-text {
+            animation: textSlideUp 1.2s ease-out 0.8s forwards;
+            /* Adjusted delay for better sync with cake */
+        }
+
+        @keyframes textSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0px);
+            }
+        }
+
+        #audioPlayer {
+            display: none;
+            /* Hidden, controlled by JS */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            .page-content {
+                padding: 25px;
+                border-radius: 15px;
+            }
+
+            #page1 h1 {
+                font-size: 3.5em;
+            }
+
+            #page1 .tap-to-start {
+                font-size: 1em;
+            }
+
+            #page2 p {
+                font-size: 1.8em;
+            }
+
+            #page3 h1 {
+                font-size: 2.8em;
+            }
+
+            #page3 p {
+                font-size: 1.2em;
+            }
+
+            #page4 h1 {
+                font-size: 3.5em;
+            }
+
+            .cake-container {
+                width: 300px;
+                height: 300px;
+                margin-top: -50px;
+            }
+
+            .cake-base {
+                height: 50px;
+            }
+
+            .cake-layer {
+                height: 40px;
+                bottom: 40px;
+            }
+
+            .cake-layer:nth-child(2) {
+                bottom: 80px;
+            }
+
+            .cake-layer:nth-child(3) {
+                bottom: 120px;
+            }
+
+            .frosting {
+                height: 30px;
+                top: -15px;
+            }
+
+            .candle {
+                height: 40px;
+                bottom: calc(120px + 40px + 15px);
+                width: 10px;
+            }
+
+            .flame {
+                width: 8px;
+                height: 18px;
+                top: -13px;
+            }
+
+            .cake-text {
+                font-size: 2.5em;
+                top: 10px;
+                /* Adjust top for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .page-content {
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            #page1 h1 {
+                font-size: 2.8em;
+            }
+
+            #page1 .tap-to-start {
+                font-size: 0.9em;
+            }
+
+            #page2 p {
+                font-size: 1.5em;
+            }
+
+            #page3 h1 {
+                font-size: 2.2em;
+            }
+
+            #page3 p {
+                font-size: 1em;
+            }
+
+            #page4 h1 {
+                font-size: 2.8em;
+            }
+
+            .cake-container {
+                width: 250px;
+                height: 250px;
+                margin-top: 0;
+            }
+
+            .cake-base {
+                height: 40px;
+            }
+
+            .cake-layer {
+                height: 35px;
+                bottom: 35px;
+            }
+
+            .cake-layer:nth-child(2) {
+                bottom: 70px;
+            }
+
+            .cake-layer:nth-child(3) {
+                bottom: 105px;
+            }
+
+            .frosting {
+                height: 25px;
+                top: -12px;
+            }
+
+            .candle {
+                height: 30px;
+                bottom: calc(105px + 35px + 12px);
+                width: 8px;
+            }
+
+            .flame {
+                width: 6px;
+                height: 15px;
+                top: -10px;
+            }
+
+            .cake-text {
+                font-size: 2em;
+                top: 5px;
+                /* Adjust top for smallest screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="page1" class="page active">
+        <div class="page-content">
+            <h1>อายุ 17 ปีแล้วนะ</h1>
+            <p class="tap-to-start">คลิกที่นี่เพื่อเริ่ม</p>
+        </div>
+    </div>
+
+    <div id="page2" class="page">
+        <div class="page-content">
+            <p>ช่วงนี้คงเหนื่อยกับอะไรหลายๆ อย่าง</p>
+            <p>แต่ผ่านมาได้ก็เก่งมากๆ แล้วนะ</p>
+        </div>
+    </div>
+
+    <div id="page3" class="page">
+        <div class="page-content">
+            <h1>Happy Birthday!</h1>
+            <p>
+                สุขสันต์วันเกิดนะอ้วน เย้ๆ 17แล้ว เค้าดีใจมากๆเลยที่ได้เจออ้วน เรารู้จักกันมา5เดือนแล้วนะ ไวมากๆเลย
+                ขอบคุณอ้วนที่เป็นเด็กน่ารักแบบนี้ ดูแลเอาใจใส่คนรอบข้างเสมอ ปีนี้ได้เป็นพี่สภาด้วย คงจะเหนื่อยมากๆ
+                แต่อ้วนจะมีเค้าเป็นกำลังใจให้เสมอนะ ไม่ว่าอ้วนจะรู้สึกแย่ขนาดไหน อ้วนจะมีเค้าอยู่ข้างๆอ้วนเสมอ 17นี้
+                ขอให้อ้วนได้กินอาหารอร่อยๆ ได้กินหนมจีบที่อ้วนชอบเย้อๆ มีเวลานอนให้เต็มอิ่ม
+                ขอให้อุปสรรคที่เข้ามาผ่านไปด้วยดี ขอให้เป็นปีที่มีแต่รอยยิ้ม อ้วนเครียดมาเยอะแล้ว ขอให้อ้วนสุขภาพแข็งแรง
+                อยู่กับเค้าและคนที่รักเธอไปนานๆ เรียนหนังสือเก่งๆ(เก่งยุแระ) ก็ขอให้อ้วนตั้วใจเรียนแบบนี้ไปตลอด
+                ทำอะไรเค้าก็ขอให้เธอสมหวัง เค้าขอโทษด้วยที่ทำตัวไม่น่ารักใส่บ่อยๆนะ สุดท้ายแล้ว เค้ารักอ้วนที่สุดในใจเลย
+                ขอบคุณที่เกิดมาให้เค้ารัก ภูมิใจที่ได้รักเธอ
+            </p>
+        </div>
+    </div>
+
+    <div id="page4" class="page">
+        <div class="page-content">
+            <a href="birthday-cake.html">เป่าเทียนสิ</a>
+        </div>
+    </div>
+
+
+
+    <audio id="audioPlayer" src="assets/audio/daylight.mp3" preload="auto" loop></audio>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        let currentPageIndex = 0;
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        function showPage(index) {
+            // Remove active from all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Set the new active page
+            pages[index].classList.add('active');
+            currentPageIndex = index;
+
+            // Specific actions for the cake page (Page 5)
+            if (pages[index].id === 'page5') {
+                setTimeout(() => {
+                    // Play audio only if it's not already playing or paused (to prevent multiple plays)
+                    if (audioPlayer.paused) {
+                        audioPlayer.play().catch(e => {
+                            console.log("Audio playback prevented:", e);
+                            // This catch block is for uninitiated autoplay.
+                            // The "Tap to start" on page 1 handles initial user gesture.
+                        });
+                    }
+                }, 500); // Delay for page transition to complete before cake animation/audio starts
+            } else {
+                // Pause audio if moving away from the cake page
+                if (!audioPlayer.paused && audioPlayer.loop) { // Only pause if it's currently playing a looped track
+                    audioPlayer.pause();
+                    audioPlayer.currentTime = 0; // Reset audio to start for next time
+                }
+            }
+        }
+
+        // --- Navigation Logic ---
+        document.body.addEventListener('click', (event) => {
+            // Prevent general body click from propagating if a specific element (like candle) was clicked
+            // This is handled by event.stopPropagation() on specific elements, but useful here too for safety.
+            if (event.target.closest('.candle')) {
+                return; // Do nothing if a candle was clicked
+            }
+
+            if (currentPageIndex === 0) { // On Page 1 ("อายุ 17 ปีแล้วนะ")
+                // Start playing audio on the very first user interaction
+                audioPlayer.play().catch(e => {
+                    console.log("Audio playback prevented:", e);
+                    // If blocked, the user might need to click again.
+                    // This is the most reliable way to initiate playback on mobile.
+                });
+                showPage(1); // Move to Page 2
+                event.stopPropagation(); // Stop propagation for the very first click on body to prevent double advance
+            } else if (currentPageIndex < pages.length - 1) { // If not on the last page (cake page)
+                showPage(currentPageIndex + 1);
+            }
+            // On the last page (cake page), clicks are exclusively handled by candles.
+        });
+
+        // --- Candle Extinguishing Logic ---
+        const candles = document.querySelectorAll('.candle');
+        candles.forEach(candle => {
+            candle.addEventListener('click', (event) => {
+                // Ensure we are on the cake page (page 5) and candle is not already extinguished
+                if (pages[currentPageIndex].id === 'page5' && !candle.classList.contains('extinguished')) {
+                    candle.classList.add('extinguished');
+                }
+                event.stopPropagation(); // Prevent candle click from also advancing the page
+            });
+        });
+
+        // Initial page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage(0);
+        });
+    </script>
+</body>
+
+</html>
